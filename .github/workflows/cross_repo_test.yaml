@@ -17,8 +17,8 @@ jobs:
       - name: Checkout implementation repo
         uses: actions/checkout@v4
         with:
-          repository: jennychristopher/jenny-github-cli   # ✅ your main repo
-          path: math_ops                                    # ✅ folder where to place it
+          repository: jennychristopher/jenny-github-cli-dev   # ✅ your main repo
+          path: addcmul_math_op                                    # ✅ folder where to place it
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 3️⃣ - Set up Python
@@ -37,6 +37,6 @@ jobs:
       # Step 5️⃣ - Run pytest on the implementation
       - name: Run Pytests
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)/math_ops/addcmul  # 👈 path to your code
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/addcmul_math_op/math_ops  # 👈 path to your code
           pytest -v
 
