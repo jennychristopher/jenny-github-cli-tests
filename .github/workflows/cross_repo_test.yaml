@@ -1,0 +1,42 @@
+name: Run Pytests on Implementation Repo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1️⃣ - Checkout the TEST repo (the one containing this workflow)
+      - name: Checkout test repo
+        uses: actions/checkout@v4
+
+      # Step 2️⃣ - Checkout your IMPLEMENTATION repo into a subfolder
+      - name: Checkout implementation repo
+        uses: actions/checkout@v4
+        with:
+          repository: jennychristopher/jenny-github-cli   # ✅ your main repo
+          path: math_ops                                    # ✅ folder where to place it
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 3️⃣ - Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Step 4️⃣ - Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+          pip install pytest
+
+      # Step 5️⃣ - Run pytest on the implementation
+      - name: Run Pytests
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)/math_ops/addcmul  # 👈 path to your code
+          pytest -v
+
