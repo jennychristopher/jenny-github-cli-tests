@@ -1,2 +1,2 @@
-This repo consists of testcases
+This repo consists of testcases for math ops
 

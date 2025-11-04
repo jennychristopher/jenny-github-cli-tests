@@ -2,7 +2,13 @@ name: Run Pytests on Implementation Repo
 
 on:
   push:
+    paths-ignore:  - 'README.md'
+                   - '**/*.md'     # ignore all markdown files
+                   - 'docs/**'
   pull_request:
+    paths-ignore:  - 'README.md'
+                   - '**/*.md'     # ignore all markdown files
+                   - 'docs/**'
 
 jobs:
   test:
