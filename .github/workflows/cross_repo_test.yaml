@@ -6,11 +6,13 @@ on:
       - 'README.md'
       - '**/*.md'     # ignore all markdown files
       - 'docs/**'
+      - '**/*.yaml'
   pull_request:
     paths-ignore:  
       - 'README.md'
       - '**/*.md'     # ignore all markdown files
       - 'docs/**'
+      - '**/*.yaml'
 
 jobs:
   test:
