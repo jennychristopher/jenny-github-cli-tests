@@ -8,3 +8,6 @@ from addcmul import addcmul
 def test_addcmul_basic():
     assert addcmul(1,2,3) == 7
 
+
+def test_addcmul_neg():
+    assert addcmul(1,-2,3) == -5
