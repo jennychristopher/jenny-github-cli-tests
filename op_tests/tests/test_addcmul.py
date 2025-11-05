@@ -11,3 +11,6 @@ def test_addcmul_basic():
 
 def test_addcmul_neg():
     assert addcmul(1,-2,3) == -5
+
+def test_addcmul_large_numbers():
+    assert addcmul(1,-2000,300) == -600001
